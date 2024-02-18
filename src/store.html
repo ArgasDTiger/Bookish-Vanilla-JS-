@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bookish</title>
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+    <link rel="stylesheet" href="assets/stylesheets/carousel.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+            <img src="assets/images/logo.png" alt="Bookish" style="max-height: 50px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Store
+                        <span class="visually-hidden">(current)</span>
+                    </a>
+                </li>
+            </ul>
+            <button class="ms-auto profile-icon">
+                <i class="bi bi-person-circle"></i>
+            </button>
+
+        </div>
+    </div>
+</nav>
+
+<main class="container">
+    <h1 class="text-center text-primary-emphasis mt-4 mb-4">Store</h1>
+    <hr>
+    <div class="row">
+        <div class="col-3">
+            <form class="d-flex mb-3">
+                <input class="form-control me-sm-2 search" type="search" placeholder="Book's name...">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+            <div class="d-flex align-items-center mb-1">
+                <h4 class="ms-1">Genres</h4>
+                <button class="btn btn-link d-inline-block" onclick="toggleChevron(this)" type="button" data-bs-toggle="collapse" data-bs-target="#genres-block" aria-expanded="false" aria-controls="genres">
+                    <span class="bi bi-chevron-down"></span>
+                </button>
+            </div>
+            <div class="collapse" id="genres-block">
+                <ul class="list-group" id="genres">
+                    <li class="list-group-item active" aria-current="true">All</li>
+                </ul>
+            </div>
+            <div class="d-flex align-items-center mt-2 mb-1">
+                <h4 class="ms-1">Authors</h4>
+                <button class="btn btn-link d-inline-block" onclick="toggleChevron(this)" type="button" data-bs-toggle="collapse" data-bs-target="#authors-block" aria-expanded="false" aria-controls="authors">
+                    <span class="bi bi-chevron-down"></span>
+                </button>
+            </div>
+            <div class="collapse" id="authors-block">
+                <ul class="list-group" id="authors">
+                    <li class="list-group-item active" aria-current="true">All</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="row" id="storeProducts">
+                <div class="col-3">
+                    <div class="card shadow-sm">
+                        <img class="img-fluid" src="assets/images/books/queen%20gambit.jpg" alt="">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-content-center">
+                                <p class="card-text">by Walter Tevis</p>
+                                <p class="card-text">$88.42</p>
+                            </div>
+                            <div class="btn-group w-100">
+                                <button class="btn btn-outline-primary w-50">
+                                    <i class="bi bi-info-lg"></i>
+                                </button>
+                                <button class="btn btn-outline-primary w-50">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+<footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Store</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Account</a></li>
+    </ul>
+    <p class="text-center text-muted">© 2024 Bookish</p>
+</footer>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/scripts/store.js"></script>
+</body>
+</html>

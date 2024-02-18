@@ -1,0 +1,244 @@
+@import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
+@import '../../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css';
+@import '../../../node_modules/bootswatch/dist/journal/bootstrap.min.css';
+
+body {
+    background-color: aliceblue;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #e8f0f6;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #97979d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #727277;
+}
+
+
+/*
+===========================================================
+    Navbar
+===========================================================
+
+*/
+.navbar-nav {
+    margin-left: 40%;
+}
+
+
+.profile-icon {
+    background-color: transparent;
+    border: none;
+    font-size: 2.2em;
+}
+
+/*
+===========================================================
+    Welcome Page
+===========================================================
+
+*/
+.welcome-block {
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to bottom right, #eae6e6, #fcf4f1);
+}
+
+.welcome-block img {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+}
+
+.welcome-block .img-right {
+    right: 0;
+}
+
+.welcome-block .img-left {
+    left: 0;
+}
+
+.welcome-block h1 {
+    font-size: 3em;
+    color: #e1685f;
+    position: absolute;
+    top: 40%;
+    transform: translate(-50%, -50%);
+}
+
+.welcome-block h1 {
+    font-size: 3em;
+    color: #e1685f;
+    position: absolute;
+}
+
+.welcome-block h1.text-left {
+    top: 40%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.welcome-block h1.text-right {
+    top: 40%;
+    right: 45%;
+    transform: translate(150%, 50%);
+}
+
+.welcome-block h2 {
+    font-size: 2em;
+    color: #e1685f;
+    position: absolute;
+}
+
+.welcome-block h2.text-left {
+    left: 25%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.welcome-block h2.text-right {
+    right: 45%;
+    top: 53%;
+    transform: translate(150%, 50%);
+}
+@media screen and (max-width: 1210px) {
+    .welcome-block h1.text-right {
+        right: 55%;
+    }
+    .welcome-block h2.text-right {
+        right: 55%;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .welcome-block {
+        height: 480px;
+    }
+    .welcome-block h1.text-left {
+        font-size: 2.5em;
+    }
+
+    .welcome-block h2.text-left {
+        font-size: 1.7em;
+        top: 48%;
+    }
+
+    .welcome-block h1.text-right {
+        font-size: 2.5em;
+        right: 60%;
+    }
+
+    .welcome-block h2.text-right {
+        font-size: 1.7em;
+        top: 51%;
+        right: 61%;
+    }
+}
+
+@media screen and (max-width: 840px) {
+    .welcome-block {
+        height: 450px;
+    }
+
+    .welcome-block h1.text-left {
+        font-size: 2.2em;
+    }
+
+    .welcome-block h2.text-left {
+        font-size: 1.5em;
+        top: 47%;
+    }
+    .welcome-block h1.text-right {
+        font-size: 2.2em;
+    }
+
+    .welcome-block h2.text-right {
+        font-size: 1.5em;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .welcome-block {
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .welcome-block {
+        height: 390px;
+    }
+
+    .welcome-block h1.text-left,
+    .welcome-block h1.text-right {
+        font-size: 1.8em;
+    }
+
+    .welcome-block h2.text-right {
+        font-size: 1.2em;
+    }
+}
+
+/*
+===========================================================
+    Store
+===========================================================
+
+*/
+
+#genres,
+#authors {
+    font-size: 0.85em;
+    max-height: 240px;
+    width: 200px;
+    overflow: auto;
+}
+
+#genres::-webkit-scrollbar,
+#authors::-webkit-scrollbar {
+    width: 6px;
+}
+
+
+.list-group-item {
+    cursor: pointer;
+}
+
+form input.search {
+    width: 324px;
+}
+
+form input.search {
+    width: 310px;
+}
+
+.card-text {
+    color: #6b6b72;
+    font-size: 0.95em;
+    margin-top: -0.5em;
+}
+
+.card img {
+    cursor: pointer;
+}
+
+#storeProducts .col-3 {
+    height: 400px;
+}
+
+#storeProducts img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
