@@ -56,7 +56,7 @@ async function addAuthorsToStore() {
 
         for (let author of authorsArray) {
             const li = document.createElement('li');
-            li.classList.add('list-group-item');
+            li.classList.add('dropdown-item');
             li.innerHTML = author;
             authorsList.appendChild(li);
         }
@@ -76,7 +76,7 @@ async function addGenresToStore() {
 
         for (let genre of genresArray) {
             const li = document.createElement('li');
-            li.classList.add('list-group-item');
+            li.classList.add('dropdown-item');
             console.log(genre);
             li.innerHTML = genre;
             genresList.appendChild(li);
@@ -84,8 +84,8 @@ async function addGenresToStore() {
     } catch (error) {
         console.error('Error adding authors to the store list:', error);
     }
-
 }
+
 
 function toggleChevron(element) {
     const span = element.getElementsByTagName('span')[0];
@@ -106,21 +106,73 @@ async function fillStore() {
         }
         const data = await response.json();
         storeProducts.innerHTML = "";
+
+        const resultsFound = document.getElementById('resultsFound');
+        resultsFound.textContent = `Found ${data.books.length} results`;
+
         for (const book of data.books) {
             const bookToAdd = `
-                <div class="col-3 mb-2">
-                    <div class="card shadow-sm">
-                        <img class="img-fluid" src="assets/images/books/${book.image}" alt="">
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 ms-3 me-3">
+                    <div class="card">
+                        <div class="card-img-container">
+                            <img class="card-img" src="assets/images/books/${book.image}" alt="${book.name}">
+                        </div>    
                         <div class="card-body">
-                            <div class="d-flex justify-content-between align-content-center">
-                                <p class="card-text">by ${book.author}</p>
-                                <p class="card-text">$${book.price}</p>
+                            <div class="d-flex flex-column justify-content-center align-items-center">
+                                <p class="card-name">${book.name}</p>
+                                <p class="card-price">$${book.price}</p>
                             </div>
                             <div class="btn-group w-100">
-                                <button class="btn btn-outline-primary w-50">
+                                <button class="btn btn-outline-primary">
                                     <i class="bi bi-info-lg"></i>
                                 </button>
-                                <button class="btn btn-outline-primary w-50">
+                                <button class="btn btn-outline-primary">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            storeProducts.insertAdjacentHTML('beforeend', bookToAdd);
+        }
+    } catch (error) {
+        console.error('Error fetching JSON:', error);
+    }
+}
+
+async function onSearchBook() {
+    try {
+        const response = await fetch('./books_db.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        const search = document.getElementById('searchBook');
+
+        const books = data.books.filter(b => b.name.toLowerCase().includes(search.value.toLowerCase()));
+        storeProducts.innerHTML = "";
+
+        const resultsFound = document.getElementById('resultsFound');
+        resultsFound.textContent = `Found ${books.length} results`;
+
+        for (const book of books) {
+            const bookToAdd = `
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 ms-3 me-3">
+                    <div class="card">
+                        <div class="card-img-container">
+                            <img class="card-img" src="assets/images/books/${book.image}" alt="${book.name}">
+                        </div>    
+                        <div class="card-body">
+                            <div class="d-flex flex-column justify-content-center align-items-center">
+                                <p class="card-name">${book.name}</p>
+                                <p class="card-price">$${book.price}</p>
+                            </div>
+                            <div class="btn-group w-100">
+                                <button class="btn btn-outline-primary">
+                                    <i class="bi bi-info-lg"></i>
+                                </button>
+                                <button class="btn btn-outline-primary">
                                     <i class="bi bi-cart-plus"></i>
                                 </button>
                             </div>

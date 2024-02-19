@@ -43,63 +43,38 @@
     <h1 class="text-center text-primary-emphasis mt-4 mb-4">Store</h1>
     <hr>
     <div class="row">
-        <div class="col-3">
-            <form class="d-flex mb-3">
-                <input class="form-control me-sm-2 search" type="search" placeholder="Book's name...">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">
-                    <i class="bi bi-search"></i>
-                </button>
-            </form>
-            <div class="d-flex align-items-center mb-1">
-                <h4 class="ms-1">Genres</h4>
-                <button class="btn btn-link d-inline-block" onclick="toggleChevron(this)" type="button" data-bs-toggle="collapse" data-bs-target="#genres-block" aria-expanded="false" aria-controls="genres">
-                    <span class="bi bi-chevron-down"></span>
-                </button>
-            </div>
-            <div class="collapse" id="genres-block">
-                <ul class="list-group" id="genres">
-                    <li class="list-group-item active" aria-current="true">All</li>
-                </ul>
-            </div>
-            <div class="d-flex align-items-center mt-2 mb-1">
-                <h4 class="ms-1">Authors</h4>
-                <button class="btn btn-link d-inline-block" onclick="toggleChevron(this)" type="button" data-bs-toggle="collapse" data-bs-target="#authors-block" aria-expanded="false" aria-controls="authors">
-                    <span class="bi bi-chevron-down"></span>
-                </button>
-            </div>
-            <div class="collapse" id="authors-block">
-                <ul class="list-group" id="authors">
-                    <li class="list-group-item active" aria-current="true">All</li>
-                </ul>
-            </div>
+        <div class="d-flex align-items-center mb-1 col-2 ms-4 position-relative">
+            <h4 class="ms-1 cursor-pointer" onclick="document.getElementById('genresButton').click()">Genres</h4>
+            <button class="btn btn-link d-inline-block" id="genresButton" onclick="toggleChevron(this)" type="button" data-bs-toggle="collapse" data-bs-target="#genres" aria-expanded="false" aria-controls="genres">
+                <span class="bi bi-chevron-down"></span>
+            </button>
+            <ul class="dropdown-menu collapse" id="genres">
+                <li class="dropdown-item active">All</li>
+            </ul>
         </div>
-        <div class="col-9">
-            <div class="row" id="storeProducts">
-                <div class="col-3">
-                    <div class="card shadow-sm">
-                        <img class="img-fluid" src="assets/images/books/queen%20gambit.jpg" alt="">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-content-center">
-                                <p class="card-text">by Walter Tevis</p>
-                                <p class="card-text">$88.42</p>
-                            </div>
-                            <div class="btn-group w-100">
-                                <button class="btn btn-outline-primary w-50">
-                                    <i class="bi bi-info-lg"></i>
-                                </button>
-                                <button class="btn btn-outline-primary w-50">
-                                    <i class="bi bi-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
+        <div class="d-flex align-items-center mb-1 col-1 me-5 position-relative">
+            <h4 class="ms-1 cursor-pointer" onclick="document.getElementById('authorsButton').click()">Authors</h4>
+            <button class="btn btn-link d-inline-block" id="authorsButton" onclick="toggleChevron(this)" type="button" data-bs-toggle="collapse" data-bs-target="#authors" aria-expanded="false" aria-controls="authors">
+                <span class="bi bi-chevron-down"></span>
+            </button>
+            <ul class="dropdown-menu collapse" id="authors">
+                <li class="dropdown-item active">All</li>
+            </ul>
         </div>
+
+        <form class="d-flex mb-3 col-4 ms-5">
+            <input class="form-control me-sm-2 search" type="search" placeholder="Book's name..." id="searchBook">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit" onclick="event.preventDefault(); (async () => { await onSearchBook(); })()">
+                <i class="bi bi-search"></i>
+            </button>
+        </form>
+    </div>
+    <h5 class="ms-4 fw-normal" id="resultsFound"></h5>
+    <div class="row mt-3" id="storeProducts">
+
     </div>
 </main>
-
 
 
 <footer class="py-3 my-4">
@@ -112,5 +87,6 @@
 </footer>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="assets/scripts/store.js"></script>
+<script src="assets/scripts/common.js"></script>
 </body>
 </html>
