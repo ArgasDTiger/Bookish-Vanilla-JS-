@@ -231,8 +231,35 @@ body {
     cursor: pointer;
 }
 
+.dropdown-menu {
+    padding: 0;
+}
 
-.card-img-container {
+.container h1 {
+    text-align: center;
+    margin: 0.8em 0;
+    font-size: 2.5em;
+}
+
+.store-h4 {
+    cursor: pointer;
+    margin-left: 0.1em;
+    font-size: 1.3em;
+}
+
+#authorsButton {
+    padding-left: 0.3em;
+}
+
+#resultsFound {
+    font-size: 1.2em;
+}
+
+#storeProducts .card-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     overflow: hidden;
 }
 
@@ -281,11 +308,30 @@ body {
 }
 
 .dropdown-menu.collapsing#genres,
-.dropdown-menu.collapsing#authors {
+.dropdown-menu.collapsing#authors,
+.dropdown-menu.collapsing#sortKinds {
     transition: none;
 }
 
+#storeProducts .card-img-container:hover img {
+    transition: 0.3s;
+    opacity: 50%;
+    filter: blur(1px);
+}
 
+#storeProducts .card-img-container:hover .rating-text {
+    visibility: visible;
+}
+
+#storeProducts .rating-text {
+    position: absolute;
+    visibility: hidden;
+    text-align: center;
+    font-size: 2.4em;
+    color: #3a3a3d;
+    user-select: none;
+    cursor: pointer;
+}
 
 @media screen and (max-width: 1068px) {
     .card {
@@ -293,5 +339,22 @@ body {
         width: 200px;
         background-color: #fffefe;
         margin-bottom: 0.6em;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .container h1 {
+        font-size: 2.2em;
+    }
+
+    .store-h4 {
+        font-size: 1.1em;
+    }
+    #resultsFound {
+        font-size: 1em;
+    }
+
+    #storeProducts .rating-text {
+        font-size: 2.1em;
     }
 }

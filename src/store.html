@@ -40,32 +40,47 @@
 </nav>
 
 <main class="container">
-    <h1 class="text-center text-primary-emphasis mt-4 mb-4">Store</h1>
+    <h1 class="text-primary-emphasis h1">Store</h1>
     <hr>
     <div class="row">
-        <div class="d-flex align-items-center mb-1 col-2 ms-4 position-relative">
-            <h4 class="ms-1 cursor-pointer" onclick="document.getElementById('genresButton').click()">Genres</h4>
-            <button class="btn btn-link d-inline-block" id="genresButton" onclick="toggleChevron(this)" type="button" data-bs-toggle="collapse" data-bs-target="#genres" aria-expanded="false" aria-controls="genres">
+        <div class="d-flex align-items-center mb-1 col-2 me-4 ms-4 position-relative">
+            <h4 class="store-h4" onclick="document.getElementById('genresButton').click()">Genres</h4>
+            <button class="btn btn-link d-inline-block ps-2" id="genresButton" onclick="toggleChevron(this)" type="button" data-bs-toggle="collapse" data-bs-target="#genres" aria-expanded="false" aria-controls="genres">
                 <span class="bi bi-chevron-down"></span>
             </button>
             <ul class="dropdown-menu collapse" id="genres">
-                <li class="dropdown-item active">All</li>
+                <li class="dropdown-item active" onclick="event.stopPropagation(); selectGenre(this); searchByGenresAndAuthor();">All</li>
             </ul>
         </div>
 
-        <div class="d-flex align-items-center mb-1 col-1 me-5 position-relative">
-            <h4 class="ms-1 cursor-pointer" onclick="document.getElementById('authorsButton').click()">Authors</h4>
+
+        <div class="d-flex align-items-center mb-1 col-2 me-4 position-relative">
+            <h4 class="store-h4" onclick="document.getElementById('authorsButton').click()">Authors</h4>
             <button class="btn btn-link d-inline-block" id="authorsButton" onclick="toggleChevron(this)" type="button" data-bs-toggle="collapse" data-bs-target="#authors" aria-expanded="false" aria-controls="authors">
                 <span class="bi bi-chevron-down"></span>
             </button>
             <ul class="dropdown-menu collapse" id="authors">
-                <li class="dropdown-item active">All</li>
+                <li class="dropdown-item active" onclick="event.stopPropagation(); selectAuthor(this); searchByGenresAndAuthor();">All</li>
+            </ul>
+        </div>
+
+        <div class="d-flex align-items-center mb-1 col-2 position-relative">
+            <h4 class="store-h4" onclick="document.getElementById('sortBy').click()">Sort By</h4>
+            <button class="btn btn-link d-inline-block ps-2" id="sortBy" onclick="toggleChevron(this)" type="button" data-bs-toggle="collapse" data-bs-target="#sortKinds" aria-expanded="false" aria-controls="sortKinds">
+                <span class="bi bi-chevron-down"></span>
+            </button>
+            <ul class="dropdown-menu collapse" id="sortKinds">
+                <li class="dropdown-item active" onclick="event.stopPropagation(); selectSort(this); searchByGenresAndAuthor();">Nothing</li>
+                <li class="dropdown-item" onclick="event.stopPropagation(); selectSort(this); searchByGenresAndAuthor();">Popularity</li>
+                <li class="dropdown-item" onclick="event.stopPropagation(); selectSort(this); searchByGenresAndAuthor();">Price (ascending)</li>
+                <li class="dropdown-item" onclick="event.stopPropagation(); selectSort(this); searchByGenresAndAuthor();">Price (descending)</li>
+
             </ul>
         </div>
 
         <form class="d-flex mb-3 col-4 ms-5">
             <input class="form-control me-sm-2 search" type="search" placeholder="Book's name..." id="searchBook">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit" onclick="event.preventDefault(); (async () => { await onSearchBook(); })()">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit" onclick="event.preventDefault(); (async () => { await searchByGenresAndAuthor(); })()">
                 <i class="bi bi-search"></i>
             </button>
         </form>
@@ -79,7 +94,7 @@
 
 <footer class="py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Home</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Store</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Account</a></li>
     </ul>

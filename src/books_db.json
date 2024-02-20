@@ -8,7 +8,8 @@
       "publishing_date": "November 8, 2011",
       "isbn": "978-1-4516-2728-2",
       "genres": ["Science Fiction", "Historical Fiction"],
-      "price": 12.99
+      "price": 12.99,
+      "rating": 9.7
     },
     {
       "name": "Queen's Gambit",
@@ -18,7 +19,8 @@
       "publishing_date": "1983",
       "isbn": "978-0-14-119630-5",
       "genres": ["Fiction", "Chess"],
-      "price": 10.50
+      "price": 10.50,
+      "rating": 9.8
     },
     {
       "name": "Botswana Time",
@@ -28,7 +30,8 @@
       "publishing_date": "July 5, 2007",
       "isbn": "978-0-553-38329-8",
       "genres": ["Travel", "Memoir"],
-      "price": 9.99
+      "price": 9.99,
+      "rating": 9.3
     },
     {
       "name": "Hitchhiker's Guide to the Galaxy",
@@ -38,7 +41,8 @@
       "publishing_date": "October 12, 1979",
       "isbn": "978-0-330-25864-7",
       "genres": ["Science Fiction", "Comedy"],
-      "price": 8.75
+      "price": 8.75,
+      "rating": 9.0
     },
     {
       "name": "Thus Spoke Zarathustra",
@@ -48,7 +52,8 @@
       "publishing_date": "1883",
       "isbn": "978-0-14-044118-5",
       "genres": ["Philosophy"],
-      "price": 11.25
+      "price": 11.25,
+      "rating": 8.4
     },
     {
       "name": "To Kill a Mockingbird",
@@ -58,7 +63,8 @@
       "publishing_date": "July 11, 1960",
       "isbn": "978-0-06-112008-4",
       "genres": ["Fiction", "Classics"],
-      "price": 7.99
+      "price": 7.99,
+      "rating": 8.8
     },
     {
       "name": "White Fang",
@@ -68,7 +74,8 @@
       "publishing_date": "May 1906",
       "isbn": "978-0-14-243726-0",
       "genres": ["Adventure", "Nature"],
-      "price": 6.49
+      "price": 6.49,
+      "rating": 9.1
     },
     {
       "name": "Steve Jobs",
@@ -78,7 +85,8 @@
       "publishing_date": "October 24, 2011",
       "isbn": "978-1-4516-4853-9",
       "genres": ["Biography", "Business"],
-      "price": 14.99
+      "price": 14.99,
+      "rating": 9.6
     },
     {
       "name": "1984",
@@ -88,7 +96,8 @@
       "publishing_date": "June 8, 1949",
       "isbn": "978-0-452-28423-4",
       "genres": ["Dystopian", "Political Fiction"],
-      "price": 9.25
+      "price": 9.25,
+      "rating": 9.8
     },
     {
       "name": "Fahrenheit 451",
@@ -98,7 +107,8 @@
       "publishing_date": "October 19, 1953",
       "isbn": "978-0-7432-4722-1",
       "genres": ["Science Fiction", "Dystopian"],
-      "price": 8.99
+      "price": 8.99,
+      "rating": 9.8
     },
     {
       "name": "The Da Vinci Code",
@@ -108,7 +118,8 @@
       "publishing_date": "March 18, 2003",
       "isbn": "978-0-385-50420-5",
       "genres": ["Mystery", "Thriller"],
-      "price": 11.75
+      "price": 11.75,
+      "rating": 8.6
     },
     {
       "name": "Animal Farm: A Fair Story",
@@ -118,7 +129,8 @@
       "publishing_date": "March 18, 2003",
       "isbn": "978-0-451-52634-2",
       "genres": ["Political Satire", "Allegory"],
-      "price": 10.25
+      "price": 10.25,
+      "rating": 9.0
     }
   ]
 }
