@@ -64,7 +64,7 @@
     align-items: center;
     font-size: 30px;
     height: 100%;
-
+    border-radius: 10px;
 }
 
 .card-container {

@@ -1,3 +1,5 @@
+//in addDataToStore get a template string of list elements
+
 async function fetchData(dataType) {
     try {
         const response = await fetch('./books_db.json');
@@ -41,24 +43,21 @@ async function addDataToStore(dataType) {
         dataArray.sort();
 
         const dataList = document.getElementById(dataType);
-
+        let listItemsToAdd = [];
         for (let item of dataArray) {
-            const li = document.createElement('li');
-            li.classList.add('dropdown-item');
-            li.innerHTML = item;
-
-            li.onclick = function() {
-                event.stopPropagation();
+            listItemsToAdd.push(`<li class="dropdown-item" onclick="
+                stopPropagation();
                 if (dataType === 'authors') {
                     selectAuthor(this);
                 } else if (dataType === 'genres') {
                     selectGenre(this);
                 }
                 searchByGenresAndAuthor();
-            };
-
-            dataList.appendChild(li);
+            ">
+                ${item}
+            </li>`);
         }
+        dataList.insertAdjacentHTML('beforeend', listItemsToAdd.join(""));
     } catch (error) {
         console.error(`Error adding ${dataType} to the store list:`, error);
     }
@@ -117,10 +116,13 @@ async function fillStore() {
         const resultsFound = document.getElementById('resultsFound');
         resultsFound.textContent = `Found ${data.books.length} results`;
 
+        let booksToAdd = '';
         for (const book of data.books) {
-            const bookToAdd = addBookHTML(book);
-            storeProducts.insertAdjacentHTML('beforeend', bookToAdd);
+            booksToAdd += addBookHTML(book);
         }
+        storeProducts.insertAdjacentHTML('beforeend', booksToAdd);
+
+
     } catch (error) {
         console.error('Error fetching JSON:', error);
     }
@@ -245,10 +247,12 @@ async function searchByGenresAndAuthor() {
         const resultsFound = document.getElementById('resultsFound');
         resultsFound.textContent = `Found ${books.length} results`;
 
+        let booksToAdd = '';
         for (const book of books) {
-            const bookToAdd = addBookHTML(book);
-            storeProducts.insertAdjacentHTML('beforeend', bookToAdd);
+            booksToAdd += addBookHTML(book);
         }
+        storeProducts.insertAdjacentHTML('beforeend', booksToAdd);
+
     } catch (error) {
         console.error('Error fetching JSON:', error);
     }

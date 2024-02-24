@@ -3,8 +3,14 @@
 @import '../../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css';
 @import '../../../node_modules/bootswatch/dist/journal/bootstrap.min.css';
 
+:root {
+    --block-gradient: linear-gradient(to bottom right, #eae6e6, #fcf4f1);
+    --bg-color: aliceblue;
+    --border-color: #c2c1c1;
+}
+
 body {
-    background-color: aliceblue;
+    background-color: var(--bg-color);
 }
 ::-webkit-scrollbar {
     width: 10px;
@@ -35,7 +41,6 @@ body {
     cursor: pointer;
 }
 
-
 /*
 ===========================================================
     Navbar
@@ -46,12 +51,65 @@ body {
     margin-left: 40%;
 }
 
+.nav-icons {
+    position: relative;
+    margin-left: auto;
+}
 
-.profile-icon {
+.nav-icon {
     background-color: transparent;
     border: none;
     font-size: 2.2em;
+    padding: 0 0.4em;
 }
+
+#profileDropdown .dropdown-btn {
+    background-color: transparent;
+    border: none;
+}
+
+.nav-icons p {
+    font-size: 0.8em;
+    position: absolute;
+    left: 3.1em;
+    top: 0.42em;
+    padding: 0 7px;
+    background-color: #c5b7b7;
+    border-radius: 50%;
+    user-select: none;
+}
+
+.nav-icon a {
+    color: inherit;
+}
+
+#profileDropdown ul {
+    margin-left: -4em;
+}
+
+/*
+===========================================================
+    Modal
+===========================================================
+
+*/
+
+.modal-body p.text-danger {
+    font-size: 0.8em;
+    margin-left: 0.6em;
+    display: none;
+}
+
+.modal-body h2.text-danger {
+    display: none;
+}
+
+.modal-body label,
+.modal-body button {
+    margin-top: 1em;
+}
+
+
 
 /*
 ===========================================================
@@ -63,7 +121,7 @@ body {
     height: 500px;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(to bottom right, #eae6e6, #fcf4f1);
+    background: var(--block-gradient);
 }
 
 .welcome-block img {
@@ -206,7 +264,6 @@ body {
 ===========================================================
     Store
 ===========================================================
-
 */
 
 #genres,
@@ -302,7 +359,7 @@ body {
     margin-bottom: 0.3em;
 }
 
-.container {
+#storeContainer {
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -357,4 +414,62 @@ body {
     #storeProducts .rating-text {
         font-size: 2.1em;
     }
+}
+
+/*
+===========================================================
+    Basket
+===========================================================
+*/
+.basket-table {
+    width: 90%;
+    background: var(--block-gradient);
+}
+
+.basket-table thead {
+    height: 3em;
+    font-size: 1.1em;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.basket-table tbody tr{
+    border-bottom: 1px solid var(--border-color);
+}
+
+.basket-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.basket-table thead th {
+    width: 14%;
+}
+.basket-table thead th:first-child {
+    width: 58%;
+}
+
+.basket-table thead th,
+.basket-table tbody th,
+.basket-table tbody td {
+    border-right: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.basket-table thead th:last-child,
+.basket-table tbody th:last-child,
+.basket-table tbody td:last-child {
+    border-right: none;
+}
+
+.basket-row-header {
+    display: flex;
+    align-items: center;
+}
+.basket-row-header img {
+    margin: 0.6em 0 0.6em 2em;
+    height: 20em;
+    width: 13em;
+    object-fit: cover;
+}
+.basket-row-header p {
+    margin: auto;
 }

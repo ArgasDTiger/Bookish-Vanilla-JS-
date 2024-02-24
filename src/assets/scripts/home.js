@@ -25,7 +25,7 @@ function addBooksOnHomepage() {
         })
         .then(data => {
             homepageBookList.innerHTML = "";
-            for (book of data.books) {
+            for (let book of data.books) {
                 let container = createDiv('card-container'),
                     card = createDiv('card'),
                     window = createDiv('window');

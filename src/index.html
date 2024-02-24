@@ -12,7 +12,7 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand ms-3" href="#">
             <img src="assets/images/logo.png" alt="Bookish" style="max-height: 50px;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,9 +30,22 @@
                     <a class="nav-link" href="store.html">Store</a>
                 </li>
             </ul>
-            <button class="ms-auto profile-icon">
-                <i class="bi bi-person-circle"></i>
-            </button>
+            <div class="nav-icons">
+                <button class="nav-icon">
+                    <a href="basket.html">
+                        <i class="bi bi-cart4"></i>
+                    </a>
+
+                </button>
+                <p>5</p>
+                <div class="d-inline-flex dropdown me-3" id="profileDropdown" >
+                    <button class="nav-icon" type="button" id="profileDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="profileDropdownBtn">
+                    </ul>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -74,6 +87,54 @@
     </section>
 </main>
 
+<section>
+    <div class="modal fade" id="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="modal-content">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="modal fade" id="advertisementModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="advertisementModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="advertisementModalLabel">A little of advertisement!</h1>
+                    <p id="advertisementCounter" class="ms-auto">5</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" disabled></button>
+                </div>
+                <div class="modal-body">
+                    Look for <a href="https://www.amazon.com/books-used-books-textbooks/b?ie=UTF8&node=283155">another choices</a> in our partner's shop!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" disabled>Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div aria-live="polite" aria-atomic="true" class="position-relative">
+
+        <div class="toast-container top-0 end-0 p-3">
+
+            <div id="specialOfferToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+                <div class="toast-header">
+                    <h6>Special offer!</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" onclick="onSpecialOfferClose()"></button>
+                </div>
+                <div class="toast-body d-flex">
+                    <h5>Subscribe to our notifications to receive special bonuses!</h5>
+                    <button class="btn btn-primary" onclick="onSpecialOfferAgree()">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <footer class="py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
@@ -82,8 +143,12 @@
     </ul>
     <p class="text-center text-muted">© 2024 Bookish</p>
 </footer>
+
 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="assets/scripts/home.js"></script>
 <script src="assets/scripts/carousel.js"></script>
+<script src="assets/scripts/common.js"></script>
+<script src="assets/scripts/auth.js"></script>
 </body>
+
 </html>

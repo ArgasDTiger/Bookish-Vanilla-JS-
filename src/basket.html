@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bookish</title>
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+    <link rel="stylesheet" href="assets/stylesheets/carousel.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand ms-3" href="#">
+            <img src="assets/images/logo.png" alt="Bookish" style="max-height: 50px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="store.html">Store</a>
+                </li>
+            </ul>
+            <div class="nav-icons">
+                <button class="nav-icon">
+                    <a href="#">
+                        <i class="bi bi-cart4"></i>
+                    </a>
+
+                </button>
+                <p>5</p>
+                <div class="d-inline-flex dropdown me-3" id="profileDropdown" >
+                    <button class="nav-icon" type="button" id="profileDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="profileDropdownBtn">
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<main class="container">
+    <h1 class="text-primary-emphasis h1">Basket</h1>
+    <hr>
+    <div class="d-flex justify-content-center align-items-center">
+        <table class="basket-table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Book</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Subtotal</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th class="basket-row-header" scope="row">
+                    <img src="assets/images/books/queen%20gambit.jpg" alt="">
+                    <p>Queen's Gambit</p>
+                </th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th class="basket-row-header" scope="row">
+                    <img src="assets/images/books/to%20kill%20a%20mockingbird.webp" alt="">
+                    <p>To Kill A Mockingbird</p>
+                </th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+
+
+<footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="store.html" class="nav-link px-2 text-muted">Store</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Account</a></li>
+    </ul>
+    <p class="text-center text-muted">© 2024 Bookish</p>
+</footer>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/scripts/store.js"></script>
+<script src="assets/scripts/common.js"></script>
+</body>
+</html>
