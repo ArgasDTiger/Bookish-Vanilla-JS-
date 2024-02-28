@@ -34,7 +34,7 @@ function fillProfileDropdown() {
     let ul = profileDropdown.getElementsByTagName('ul')[0];
     ul.textContent = '';
     let ulContent;
-    if (localStorage.getItem('key') === null) {
+    if (localStorage.getItem('token') === null) {
         ulContent = `<li class="dropdown-item" onclick="fillSignInWindow()" type="button" data-bs-toggle="modal" data-bs-target="#modal">Login</li>
                      <li class="dropdown-item" onclick="fillSignUpWindow()" type="button" data-bs-toggle="modal" data-bs-target="#modal">Register</li>`
     } else {
@@ -84,7 +84,10 @@ function fillSignUpWindow() {
             <p class="text-danger me-auto">Display Name should contain at least 3 characters</p>
             <label for="signUpPassword" class="sr-only ms-1 me-auto">Password</label>
             <input type="password" id="signUpPassword" class="form-control" placeholder="Password" required>
-            <p class="text-danger me-auto">Password must contain at least 8 symbols</p>
+            <p class="text-danger me-auto">Password is too week (special characters, number, min 8 symbols)</p>
+            <label for="confirmPassword" class="sr-only ms-1 me-auto">Confirm Password</label>
+            <input type="password" id="confirmPassword" class="form-control" placeholder="Password" required>
+            <p class="text-danger me-auto">Passwords do not match</p>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
         </form>
     </div>`;
@@ -93,6 +96,7 @@ function fillSignUpWindow() {
 }
 
 //spam
+/*
 if (localStorage.getItem('offerAgreed') === null) {
     setTimeout(() => {
         const specialOfferToast = document.getElementById('specialOfferToast')
@@ -145,3 +149,4 @@ window.addEventListener('scroll', function() {
         }, 1000);
     }
 });
+*/

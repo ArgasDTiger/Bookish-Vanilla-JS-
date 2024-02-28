@@ -2,13 +2,14 @@
 
 async function fetchData(dataType) {
     try {
-        const response = await fetch('./books_db.json');
+        const response = await fetch('https://localhost:7117/api/books', {
+        });
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
         const resultSet = new Set([]);
-        for (let book of data.books) {
+        for (let book of data) {
             if (dataType === 'authors') {
                 resultSet.add(book.author);
             } else if (dataType === 'genres') {
@@ -45,30 +46,34 @@ async function addDataToStore(dataType) {
         const dataList = document.getElementById(dataType);
         let listItemsToAdd = [];
         for (let item of dataArray) {
-            listItemsToAdd.push(`<li class="dropdown-item" onclick="
-                stopPropagation();
+            const listItem = document.createElement('li');
+            listItem.classList.add('dropdown-item');
+            listItem.textContent = item;
+            listItem.addEventListener('click', function(event) {
+                event.stopPropagation();
                 if (dataType === 'authors') {
                     selectAuthor(this);
                 } else if (dataType === 'genres') {
                     selectGenre(this);
                 }
                 searchByGenresAndAuthor();
-            ">
-                ${item}
-            </li>`);
+            });
+            listItemsToAdd.push(listItem);
         }
-        dataList.insertAdjacentHTML('beforeend', listItemsToAdd.join(""));
+        dataList.append(...listItemsToAdd);
     } catch (error) {
         console.error(`Error adding ${dataType} to the store list:`, error);
     }
 }
+
+
 
 function addBookHTML(book) {
     return `
         <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 ms-3 me-3">
             <div class="card">
                 <div class="card-img-container">
-                    <img class="card-img" src="assets/images/books/${book.image}" alt="${book.name}">
+                    <img class="card-img" src="assets/images/books/${book.imageUrl}" alt="${book.name}">
                     <p class="rating-text">${book.rating.toFixed(1)}/10</p>
                 </div>    
                 <div class="card-body">
@@ -101,7 +106,7 @@ function toggleChevron(element) {
 }
 
 async function fetchBooks() {
-    const response = await fetch('./books_db.json');
+    const response = await fetch('https://localhost:7117/api/books');
     if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
     }
@@ -114,10 +119,10 @@ async function fillStore() {
         storeProducts.innerHTML = "";
 
         const resultsFound = document.getElementById('resultsFound');
-        resultsFound.textContent = `Found ${data.books.length} results`;
+        resultsFound.textContent = `Found ${data.length} results`;
 
         let booksToAdd = '';
-        for (const book of data.books) {
+        for (const book of data) {
             booksToAdd += addBookHTML(book);
         }
         storeProducts.insertAdjacentHTML('beforeend', booksToAdd);
@@ -219,7 +224,7 @@ async function searchByGenresAndAuthor() {
         const selectedAuthors = getSelectedAuthors();
 
 
-        let books = data.books.filter(book =>
+        let books = data.filter(book =>
             book.name.toLowerCase().includes(search.value.trim().toLowerCase()) &&
             (selectedGenres.includes('All') || selectedGenres.some(genre => book.genres.includes(genre))) &&
             (selectedAuthors.includes('All') || selectedAuthors.some(author => book.author === author))
