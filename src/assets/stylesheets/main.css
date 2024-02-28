@@ -432,12 +432,16 @@ body {
     border-bottom: 1px solid var(--border-color);
 }
 
-.basket-table tbody tr{
+.basket-table tbody tr {
     border-bottom: 1px solid var(--border-color);
 }
 
 .basket-table tbody tr:last-child {
     border-bottom: none;
+}
+
+.basket-table tfoot {
+    border-top: 1px solid var(--border-color);
 }
 
 .basket-table thead th {
@@ -466,10 +470,128 @@ body {
 }
 .basket-row-header img {
     margin: 0.6em 0 0.6em 2em;
-    height: 20em;
-    width: 13em;
+    height: 18em;
+    width: 12em;
     object-fit: cover;
 }
 .basket-row-header p {
-    margin: auto;
+    margin: auto 0 auto auto;
+}
+
+.basket-row-header i.bi-trash {
+    color: #6b6b72;
+    margin-top: 0.2em;
+    margin-left: 0.6em;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.basket-row-header i.bi-trash:hover {
+    color: #da5656;
+}
+
+#basketItemsCount {
+    visibility: hidden;
+}
+
+#basketTbody {
+    font-size: 1.1em;
+}
+
+.basket-table tfoot {
+    font-size: 1.2em;
+}
+
+#basketTbody .bi-dash,
+#basketTbody .bi-plus {
+    background-color: #eed1d0;
+    margin: 0 0.7em;
+    padding: 0.1em 0.25em;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#basketTbody .bi-dash:hover,
+#basketTbody .bi-plus:hover {
+    background-color: #e3d0ce;
+
+}
+
+@media screen and (max-width: 1200px) {
+    #basketTbody {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #basketTbody {
+        font-size: 0.9em;
+    }
+
+    #basketTbody .bi-dash,
+    #basketTbody .bi-plus {
+        margin: 0 0.3em;
+        padding: 0.1em 0.25em;
+    }
+
+    .basket-table {
+        width: 100%;
+    }
+
+    .basket-table tfoot {
+        font-size: 1.05em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .basket-table thead {
+        height: 2.5em;
+        font-size: 0.9em;
+    }
+    .basket-row-header img {
+        margin: 0.4em 0 0.4em 1em;
+        height: 14em;
+        width: 9em;
+        object-fit: cover;
+    }
+    .basket-table thead th {
+        width: 18%;
+    }
+    .basket-table thead th:first-child {
+        width: 46%;
+    }
+    .basket-row-header p {
+        font-size: 0.9em;
+    }
+
+    .basket-table tfoot {
+        font-size: 0.95em;
+    }
+}
+@media screen and (max-width: 475px) {
+    .basket-table thead {
+        height: 2.5em;
+        font-size: 0.9em;
+    }
+    .basket-row-header img {
+        margin: 0.4em 0 0.4em 1em;
+        height: 12em;
+        width: 7em;
+        object-fit: cover;
+    }
+    .basket-table thead {
+        height: 2.5em;
+        font-size: 0.8em;
+    }
+    .basket-row-header p {
+        font-size: 0.8em;
+    }
+
+    #basketTbody {
+        font-size: 0.8em;
+    }
+
+    .basket-table tfoot {
+        font-size: 0.85em;
+    }
 }

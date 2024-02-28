@@ -34,9 +34,8 @@
                     <a href="#">
                         <i class="bi bi-cart4"></i>
                     </a>
-
                 </button>
-                <p>5</p>
+                <p id="basketItemsCount">0</p>
                 <div class="d-inline-flex dropdown me-3" id="profileDropdown" >
                     <button class="nav-icon" type="button" id="profileDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person-circle"></i>
@@ -63,31 +62,29 @@
                 <th scope="col">Subtotal</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <th class="basket-row-header" scope="row">
-                    <img src="assets/images/books/queen%20gambit.jpg" alt="">
-                    <p>Queen's Gambit</p>
-                </th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th class="basket-row-header" scope="row">
-                    <img src="assets/images/books/to%20kill%20a%20mockingbird.webp" alt="">
-                    <p>To Kill A Mockingbird</p>
-                </th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
+            <tbody id="basketTbody">
             </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="2"></td>
+                <td><p>Total:</p></td>
+                <td>
+                    <p class="fw-bold" id="basketTotal">$0.00</p>
+                </td>
+            </tr>
+            </tfoot>
         </table>
     </div>
 </main>
 
-
+<section>
+    <div class="modal fade" id="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="modal-content">
+            </div>
+        </div>
+    </div>
+</section>
 
 <footer class="py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
@@ -98,7 +95,8 @@
     <p class="text-center text-muted">© 2024 Bookish</p>
 </footer>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/scripts/store.js"></script>
+<script src="assets/scripts/auth.js"></script>
 <script src="assets/scripts/common.js"></script>
+<script src="assets/scripts/basket.js"></script>
 </body>
 </html>

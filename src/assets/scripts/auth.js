@@ -94,7 +94,6 @@ async function signUp(event) {
                     textAlerts[0].textContent = 'Email already exists';
                     textAlerts[0].setAttribute('style', 'display: block');
                 }
-                console.log(errorDetails);
             } else {
                 location.reload();
             }

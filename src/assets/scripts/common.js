@@ -32,6 +32,7 @@ fillProfileDropdown();
 function fillProfileDropdown() {
     const profileDropdown = document.getElementById('profileDropdown');
     let ul = profileDropdown.getElementsByTagName('ul')[0];
+    let basketItemsCount = document.getElementById('basketItemsCount');
     ul.textContent = '';
     let ulContent;
     if (localStorage.getItem('token') === null) {
@@ -40,6 +41,7 @@ function fillProfileDropdown() {
     } else {
         ulContent = `<li class="dropdown-item">My Profile</li>
                      <li class="dropdown-item" onclick="onAccountExit()">Exit</li>`
+        basketItemsCount.style.visibility = 'visible';
     }
     ul.insertAdjacentHTML('beforeend', ulContent);
 }
@@ -93,6 +95,15 @@ function fillSignUpWindow() {
     </div>`;
     document.getElementById('signUpForm').addEventListener('submit', signUp);
 
+}
+
+
+// basket
+setBasketItemsCount();
+function setBasketItemsCount() {
+    const basketItems = localStorage.getItem('basketItems');
+    let basketItemsCount = document.getElementById('basketItemsCount');
+    basketItemsCount.textContent = basketItems === null ? 0 : JSON.parse(basketItems).length;
 }
 
 //spam

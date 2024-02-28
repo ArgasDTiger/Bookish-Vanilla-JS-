@@ -1,5 +1,3 @@
-//in addDataToStore get a template string of list elements
-
 async function fetchData(dataType) {
     try {
         const response = await fetch('https://localhost:7117/api/books', {
@@ -49,7 +47,7 @@ async function addDataToStore(dataType) {
             const listItem = document.createElement('li');
             listItem.classList.add('dropdown-item');
             listItem.textContent = item;
-            listItem.addEventListener('click', function(event) {
+            listItem.addEventListener('click', function (event) {
                 event.stopPropagation();
                 if (dataType === 'authors') {
                     selectAuthor(this);
@@ -66,8 +64,6 @@ async function addDataToStore(dataType) {
     }
 }
 
-
-
 function addBookHTML(book) {
     return `
         <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 ms-3 me-3">
@@ -77,6 +73,7 @@ function addBookHTML(book) {
                     <p class="rating-text">${book.rating.toFixed(1)}/10</p>
                 </div>    
                 <div class="card-body">
+                     <input type="hidden" value=${book.isbn}>
                     <div class="d-flex flex-column justify-content-center align-items-center">
                         <p class="card-name">${book.name}</p>
                         <p class="card-price">$${book.price.toFixed(2)}</p>
@@ -85,7 +82,7 @@ function addBookHTML(book) {
                         <button class="btn btn-outline-primary">
                             <i class="bi bi-info-lg"></i>
                         </button>
-                        <button class="btn btn-outline-primary">
+                        <button class="btn btn-outline-primary" onclick="addItemToBasket('${book.isbn}')">
                             <i class="bi bi-cart-plus"></i>
                         </button>
                     </div>
@@ -261,4 +258,22 @@ async function searchByGenresAndAuthor() {
     } catch (error) {
         console.error('Error fetching JSON:', error);
     }
+}
+
+
+// basket handling
+function addItemToBasket(isbn) {
+    const basketItems = localStorage.getItem('basketItems');
+    let newBasketItems = basketItems ? JSON.parse(basketItems) : [];
+
+    const existingItemIndex = newBasketItems.findIndex(item => item.isbn === isbn);
+
+    if (existingItemIndex !== -1) {
+        newBasketItems[existingItemIndex].quantity += 1;
+    } else {
+        newBasketItems.push({ isbn: isbn, quantity: 1 });
+    }
+
+    localStorage.setItem('basketItems', JSON.stringify(newBasketItems));
+    setBasketItemsCount();
 }
