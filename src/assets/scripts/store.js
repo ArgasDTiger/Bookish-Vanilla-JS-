@@ -133,17 +133,6 @@ function addBookHTMLAdmin(book) {
         </div>`;
 }
 
-function toggleChevron(element) {
-    const span = element.getElementsByTagName('span')[0];
-    if (span.classList.contains('bi-chevron-down')) {
-        span.classList.remove('bi-chevron-down');
-        span.classList.add('bi-chevron-up');
-    } else {
-        span.classList.remove('bi-chevron-up');
-        span.classList.add('bi-chevron-down');
-    }
-}
-
 async function fetchBooks() {
     const response = await fetch('https://localhost:7117/api/books');
     if (!response.ok) {

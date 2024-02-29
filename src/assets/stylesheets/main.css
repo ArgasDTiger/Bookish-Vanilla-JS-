@@ -43,6 +43,41 @@ body {
 
 /*
 ===========================================================
+    Scroll Arrow
+===========================================================
+
+*/
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--bs-primary);
+    width: 50px;
+    height: 50px;
+    text-decoration: none;
+    border-radius: 35px;
+    display: none;
+    transition: all 0.3s ease;
+}
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 16px;
+    top: 13px;
+    font-size: 19px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+#return-to-top:hover {
+    background-color: #e17d79;
+}
+#return-to-top:hover i {
+    color: #fff;
+    top: 5px;
+}
+/*
+===========================================================
     Navbar
 ===========================================================
 
@@ -85,6 +120,10 @@ body {
 
 #profileDropdown ul {
     margin-left: -4em;
+}
+
+.dropdown-item a {
+    color: var(--bs-dropdown-link-color);
 }
 
 /*
@@ -366,7 +405,8 @@ body {
 
 .dropdown-menu.collapsing#genres,
 .dropdown-menu.collapsing#authors,
-.dropdown-menu.collapsing#sortKinds {
+.dropdown-menu.collapsing#sortKinds,
+.dropdown-menu.collapsing#chartTypes {
     transition: none;
 }
 
@@ -428,6 +468,28 @@ body {
     #storeProducts .rating-text {
         font-size: 2.1em;
     }
+}
+
+/*
+===========================================================
+    News
+===========================================================
+*/
+
+.news-item {
+    cursor: pointer;
+}
+#newsBtn {
+    color: black;
+    text-decoration: none;
+}
+
+.news-btn:hover {
+    color: var(--bs-primary);
+}
+
+.card-news {
+    width: 100%;
 }
 
 /*
@@ -608,4 +670,31 @@ body {
     .basket-table tfoot {
         font-size: 0.85em;
     }
+}
+
+/*
+===========================================================
+    Profile
+===========================================================
+*/
+
+#profileUl {
+    list-style: none;
+    text-align: center;
+    width: 20em;
+}
+
+#profileUl li:first-child img {
+    margin: -1em;
+    height: 10em;
+}
+
+#profileUl li {
+    border: 1px solid var(--border-color);
+    padding: 0.6em 0;
+}
+
+#chartType {
+    background-color: transparent;
+    border: none;
 }

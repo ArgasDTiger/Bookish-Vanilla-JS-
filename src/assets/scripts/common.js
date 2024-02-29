@@ -27,6 +27,17 @@ for (let i = 0; i < dropdowns.length; i++) {
     });
 }
 
+function toggleChevron(element) {
+    const span = element.getElementsByTagName('span')[0];
+    if (span.classList.contains('bi-chevron-down')) {
+        span.classList.remove('bi-chevron-down');
+        span.classList.add('bi-chevron-up');
+    } else {
+        span.classList.remove('bi-chevron-up');
+        span.classList.add('bi-chevron-down');
+    }
+}
+
 //profile dropdown
 fillProfileDropdown();
 function fillProfileDropdown() {
@@ -39,7 +50,7 @@ function fillProfileDropdown() {
         ulContent = `<li class="dropdown-item" onclick="fillSignInWindow()" type="button" data-bs-toggle="modal" data-bs-target="#modal">Login</li>
                      <li class="dropdown-item" onclick="fillSignUpWindow()" type="button" data-bs-toggle="modal" data-bs-target="#modal">Register</li>`
     } else {
-        ulContent = `<li class="dropdown-item">My Profile</li>
+        ulContent = `<li class="dropdown-item"><a href="profile.html" class="text-decoration-none">My Profile</a></li>
                      <li class="dropdown-item" onclick="onAccountExit()">Exit</li>`
         basketItemsCount.style.visibility = 'visible';
     }
@@ -60,12 +71,28 @@ function fillSignInWindow() {
                 <label for="signInEmail" class="sr-only ms-1 me-auto">Email address</label>
                 <input type="email" id="signInEmail" class="form-control mb-2" placeholder="Email address" required>
                 <label for="signInPassword" class="sr-only ms-1 me-auto">Password</label>
-                <input type="password" id="signInPassword" class="form-control mb-2" placeholder="Password" required>
+                <div class="input-group mb-2">
+                    <input type="password" id="signInPassword" class="form-control" placeholder="Password" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i id="togglePassword" class="bi bi-eye-fill"></i>
+                        </span>
+                    </div>
+                </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
             </form>
         </div>`;
     document.getElementById('signInForm').addEventListener('submit', signIn);
+    const togglePassword = document.querySelector('#togglePassword');
+    const passwordField = document.querySelector('#signInPassword');
+    togglePassword.addEventListener('click', function (e) {
+        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField.setAttribute('type', type);
+        this.classList.toggle('bi-eye-slash-fill');
+    });
 }
+
+
 
 
 function fillSignUpWindow() {
@@ -76,7 +103,7 @@ function fillSignUpWindow() {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-            <form id="signUpForm" class="form-signin d-flex justify-content-center align-items-center flex-column">
+        <form id="signUpForm" class="form-signin d-flex justify-content-center align-items-center flex-column">
             <h1 class="h3 mb-3 font-weight-normal">Please enter your data</h1>
             <label for="signUpEmail" class="sr-only ms-1 me-auto">Email address</label>
             <input type="email" id="signUpEmail" class="form-control" placeholder="Email address" required>
@@ -85,17 +112,47 @@ function fillSignUpWindow() {
             <input type="text" id="signUpDisplayName" class="form-control" placeholder="Display Name" required>
             <p class="text-danger me-auto">Display Name should contain at least 3 characters</p>
             <label for="signUpPassword" class="sr-only ms-1 me-auto">Password</label>
-            <input type="password" id="signUpPassword" class="form-control" placeholder="Password" required>
-            <p class="text-danger me-auto">Password is too week (special characters, number, min 8 symbols)</p>
+            <div class="input-group mb-2">
+                <input type="password" id="signUpPassword" class="form-control" placeholder="Password" required>
+                <div class="input-group-append">
+                    <span class="input-group-text">
+                        <i id="togglePassword" class="bi bi-eye-fill"></i>
+                    </span>
+                </div>
+            </div>
+            <p class="text-danger me-auto">Password is too weak (special characters, number, min 8 symbols)</p>
             <label for="confirmPassword" class="sr-only ms-1 me-auto">Confirm Password</label>
-            <input type="password" id="confirmPassword" class="form-control" placeholder="Password" required>
+            <div class="input-group mb-2">
+                <input type="password" id="confirmPassword" class="form-control" placeholder="Password" required>
+                <div class="input-group-append">
+                    <span class="input-group-text">
+                        <i id="toggleConfirmPassword" class="bi bi-eye-fill"></i>
+                    </span>
+                </div>
+            </div>
             <p class="text-danger me-auto">Passwords do not match</p>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
         </form>
     </div>`;
     document.getElementById('signUpForm').addEventListener('submit', signUp);
 
+    const togglePassword = document.querySelector('#togglePassword');
+    const passwordField = document.querySelector('#signUpPassword');
+    togglePassword.addEventListener('click', function (e) {
+        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField.setAttribute('type', type);
+        this.classList.toggle('bi-eye-slash-fill');
+    });
+
+    const toggleConfirmPassword = document.querySelector('#toggleConfirmPassword');
+    const confirmPasswordField = document.querySelector('#confirmPassword');
+    toggleConfirmPassword.addEventListener('click', function (e) {
+        const type = confirmPasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        confirmPasswordField.setAttribute('type', type);
+        this.classList.toggle('bi-eye-slash-fill');
+    });
 }
+
 
 
 // basket
@@ -105,6 +162,23 @@ function setBasketItemsCount() {
     let basketItemsCount = document.getElementById('basketItemsCount');
     basketItemsCount.textContent = basketItems === null ? 0 : JSON.parse(basketItems).length;
 }
+
+
+// scroll
+window.addEventListener('scroll', function() {
+    const returnToTop = document.getElementById('return-to-top');
+    if (window.pageYOffset >= (document.documentElement.scrollHeight / 3)) {
+        returnToTop.style.display = 'block'; // Show the arrow
+    } else {
+        returnToTop.style.display = 'none'; // Hide the arrow
+    }
+});
+
+document.getElementById('return-to-top').addEventListener('click', function() {
+    window.scrollTo(0, 0); // Scroll to top of the page instantly
+});
+
+
 
 //spam
 /*

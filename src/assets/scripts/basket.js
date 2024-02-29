@@ -106,7 +106,7 @@ function basketPlus(isbn) {
 
     itemSubtotal.textContent = `$${(basketItems[indexOfItem].quantity * itemPrice.textContent.substring(1)).toFixed(2)}`;
     basketTotal.textContent = `$${(+basketTotal.textContent.substring(1) + +itemPrice.textContent.substring(1)).toFixed(2)}`;
-s}
+}
 
 function removeBookFromBasket(isbn) {
     let basketItems = JSON.parse(localStorage.getItem('basketItems'));
@@ -118,6 +118,6 @@ function removeBookFromBasket(isbn) {
     basketItems = basketItems.filter(item => item.isbn !== isbn);
 
     localStorage.setItem('basketItems', JSON.stringify(basketItems));
-
+    setBasketItemsCount();
     fillBasket();
 }

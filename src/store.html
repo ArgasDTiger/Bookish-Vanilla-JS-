@@ -29,6 +29,9 @@
                     <a class="nav-link active" href="#">Store</a>
                     <span class="visually-hidden">(current)</span>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="news.html">News</a>
+                </li>
             </ul>
             <div class="nav-icons">
                 <button class="nav-icon">
@@ -85,7 +88,6 @@
                 <li class="dropdown-item" onclick="event.stopPropagation(); selectSort(this); searchByGenresAndAuthor();">Popularity</li>
                 <li class="dropdown-item" onclick="event.stopPropagation(); selectSort(this); searchByGenresAndAuthor();">Price (ascending)</li>
                 <li class="dropdown-item" onclick="event.stopPropagation(); selectSort(this); searchByGenresAndAuthor();">Price (descending)</li>
-
             </ul>
         </div>
 
@@ -101,7 +103,7 @@
 
     </div>
 </main>
-
+<a id="return-to-top"><i class="bi bi-chevron-up"></i></a>
 <section>
     <div class="modal fade" id="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -132,7 +134,9 @@
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Home</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Store</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Account</a></li>
+        <li class="nav-item"><a href="news.html" class="nav-link px-2 text-muted">News</a></li>
+        <li class="nav-item"><a href="basket.html" class="nav-link px-2 text-muted">Basket</a></li>
+        <li class="nav-item"><a href="profile.html" class="nav-link px-2 text-muted">Account</a></li>
     </ul>
     <p class="text-center text-muted">© 2024 Bookish</p>
 </footer>
