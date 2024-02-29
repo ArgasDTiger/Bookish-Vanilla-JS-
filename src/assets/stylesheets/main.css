@@ -390,6 +390,20 @@ body {
     cursor: pointer;
 }
 
+#addNewBook {
+    color: var(--bs-primary);
+    background-color: transparent;
+    font-size: 11em;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+}
+
+#addNewBook:hover {
+    color: #e17d79;
+    background-color: #f6e0e0;
+}
+
 @media screen and (max-width: 1068px) {
     .card {
         padding: 4px;
