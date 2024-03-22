@@ -21,10 +21,7 @@ async function signIn(event) {
         if (!response.ok) {
             const errorDetails = await response.text();
 
-            if (errorDetails === "User is not found.") {
-                textAlert.setAttribute('style', 'display: block');
-                textAlert.textContent = "Email is not in use";
-            } else if (errorDetails === "Wrong email or password.") {
+            if (errorDetails === "User is not found." || errorDetails === "Wrong email or password.") {
                 textAlert.setAttribute('style', 'display: block');
                 textAlert.textContent = "Wrong email or password!";
             } else {

@@ -1,5 +1,8 @@
 //overall dropdown clicks
 
+
+
+
 let dropdowns = document.getElementsByClassName("btn btn-link d-inline-block");
 
 function closeDropdowns() {
@@ -26,6 +29,22 @@ for (let i = 0; i < dropdowns.length; i++) {
         }
     });
 }
+
+checkIfBasketExpired();
+function checkIfBasketExpired() {
+    let setupTime = localStorage.getItem('setupTime');
+    let now = new Date().getTime();
+
+    if (setupTime != null) {
+        setupTime = new Date(setupTime).getTime();
+        console.log('it is called');
+        if (now > setupTime) {
+            localStorage.removeItem('setupTime');
+            localStorage.removeItem('basketItems');
+        }
+    }
+}
+
 
 function toggleChevron(element) {
     const span = element.getElementsByTagName('span')[0];
@@ -168,14 +187,14 @@ function setBasketItemsCount() {
 window.addEventListener('scroll', function() {
     const returnToTop = document.getElementById('return-to-top');
     if (window.pageYOffset >= (document.documentElement.scrollHeight / 3)) {
-        returnToTop.style.display = 'block'; // Show the arrow
+        returnToTop.style.display = 'block';
     } else {
-        returnToTop.style.display = 'none'; // Hide the arrow
+        returnToTop.style.display = 'none';
     }
 });
 
 document.getElementById('return-to-top').addEventListener('click', function() {
-    window.scrollTo(0, 0); // Scroll to top of the page instantly
+    window.scrollTo(0, 0);
 });
 
 

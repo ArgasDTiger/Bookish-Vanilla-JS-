@@ -20,7 +20,7 @@ async function fillBasket() {
 
     const response = await fetch(url, {
         method: 'GET',
-            headers: {
+        headers: {
             'Content-Type': 'application/json',
         },
     });
@@ -120,4 +120,28 @@ function removeBookFromBasket(isbn) {
     localStorage.setItem('basketItems', JSON.stringify(basketItems));
     setBasketItemsCount();
     fillBasket();
+}
+
+function fillPurchaseConfirmWindow() {
+    const modalElement = document.getElementById('modal-content');
+    modalElement.innerHTML = `
+    <div class="modal-header">
+        <h5 class="modal-title">Confirm Purchase</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Do you confirm your purchase?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" onclick="confirmPurchase()" class="btn btn-primary">Confirm</button>
+      </div>
+`;
+    document.getElementById('bookCreateForm').addEventListener('submit', createBook);
+}
+
+function confirmPurchase() {
+    location.reload();
+    localStorage.removeItem('basketItems');
+
 }

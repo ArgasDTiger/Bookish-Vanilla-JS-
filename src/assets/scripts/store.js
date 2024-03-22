@@ -31,6 +31,7 @@ async function main() {
     await addDataToStore('genres');
 
     await fillStore();
+
 }
 
 main().catch(error =>
@@ -347,4 +348,23 @@ function addItemToBasket(isbn) {
 
     localStorage.setItem('basketItems', JSON.stringify(newBasketItems));
     setBasketItemsCount();
+
+    let hours = 240;
+    let now = new Date().getTime();
+    let setupTime = localStorage.getItem('setupTime');
+
+    if (setupTime == null) {
+        let newSetupTime = new Date(now + hours * 60 * 60 * 1000);
+        let setupTimeString = newSetupTime.toISOString();
+
+        localStorage.setItem('setupTime', setupTimeString);
+    } else {
+        let storedSetupTime = new Date(setupTime);
+
+        if (now - storedSetupTime.getTime() > hours * 60 * 60 * 1000) {
+            localStorage.clear();
+            localStorage.setItem('setupTime', now);
+        }
+    }
+
 }

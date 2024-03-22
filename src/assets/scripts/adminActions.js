@@ -1,5 +1,3 @@
-
-
 async function fillEditBookWindow(isbn, title, imageUrl, author, price, currentGenres) {
     currentGenres = currentGenres.split(',');
 

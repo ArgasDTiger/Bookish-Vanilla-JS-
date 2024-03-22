@@ -58,6 +58,7 @@ body {
     border-radius: 35px;
     display: none;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 #return-to-top i {
     color: #fff;
@@ -591,6 +592,15 @@ body {
 #basketTbody .bi-plus:hover {
     background-color: #e3d0ce;
 
+}
+
+.basket-purchase {
+    margin-top: 1em;
+    width: 90%;
+}
+
+.basket-purchase button {
+    width: 20%;
 }
 
 @media screen and (max-width: 1200px) {

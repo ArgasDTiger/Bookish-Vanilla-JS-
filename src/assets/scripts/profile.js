@@ -2,48 +2,6 @@ let myChart;
 displayInitialChart();
 fillProfile();
 
-function updateChart(data, labels, chartType) {
-    if (myChart) {
-        myChart.destroy();
-    }
-    let ctx = document.getElementById('myChart').getContext('2d');
-    myChart = new Chart(ctx, {
-        type: chartType,
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'The most popular books in basket',
-                data: data,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-}
-
-
 async function prepareChartData() {
     const basketItems = JSON.parse(localStorage.getItem('basketItems'));
     let bookCount = {};
@@ -73,18 +31,11 @@ async function prepareChartData() {
     let labels = [];
 
     for (let name in bookCount) {
-        if (bookCount.hasOwnProperty(name)) {
-            labels.push(name);
-            data.push(bookCount[name]);
-        }
+        labels.push(name);
+        data.push(bookCount[name]);
     }
 
     return { data: data, labels: labels };
-}
-
-async function displayInitialChart() {
-    let initialChartData = await prepareChartData();
-    updateChart(initialChartData.data, initialChartData.labels, 'pie');
 }
 
 async function selectChart(element) {
@@ -108,6 +59,81 @@ async function selectChart(element) {
 
     let chartData = await prepareChartData();
     updateChart(chartData.data, chartData.labels, chartType);
+}
+
+function updateChart(data, labels, chartType) {
+    if (myChart) {
+        myChart.destroy();
+    }
+    let ctx = document.getElementById('myChart').getContext('2d');
+    myChart = new Chart(ctx, {
+        type: chartType,
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'The most popular books in basket',
+                data: data,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 0, 0, 0.2)',
+                    'rgba(0, 255, 0, 0.2)',
+                    'rgba(0, 0, 255, 0.2)',
+                    'rgba(255, 255, 0, 0.2)',
+                    'rgba(255, 0, 255, 0.2)',
+                    'rgba(0, 255, 255, 0.2)',
+                    'rgba(128, 0, 0, 0.2)',
+                    'rgba(0, 128, 0, 0.2)',
+                    'rgba(0, 0, 128, 0.2)',
+                    'rgba(128, 128, 0, 0.2)',
+                    'rgba(128, 0, 128, 0.2)',
+                    'rgba(0, 128, 128, 0.2)',
+                    'rgba(192, 192, 192, 0.2)',
+                    'rgba(128, 128, 128, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 0, 0, 1)',
+                    'rgba(0, 255, 0, 1)',
+                    'rgba(0, 0, 255, 1)',
+                    'rgba(255, 255, 0, 1)',
+                    'rgba(255, 0, 255, 1)',
+                    'rgba(0, 255, 255, 1)',
+                    'rgba(128, 0, 0, 1)',
+                    'rgba(0, 128, 0, 1)',
+                    'rgba(0, 0, 128, 1)',
+                    'rgba(128, 128, 0, 1)',
+                    'rgba(128, 0, 128, 1)',
+                    'rgba(0, 128, 128, 1)',
+                    'rgba(192, 192, 192, 1)',
+                    'rgba(128, 128, 128, 1)'
+                ]
+                ,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+async function displayInitialChart() {
+    let initialChartData = await prepareChartData();
+    updateChart(initialChartData.data, initialChartData.labels, 'pie');
 }
 
 async function fillProfile() {
